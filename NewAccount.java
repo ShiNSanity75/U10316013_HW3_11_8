@@ -85,12 +85,16 @@ public class NewAccount {
 	
 	//withdraw a specified amount from the account
 	double withdraw(double amount) {
-			return balance -= amount;
+			balance -= amount;
+			Transaction transaction = new Transaction(dateCreated, 'W', balance, "withdraw");
+			return balance;
 	}
 	
 	//deposit a specified amount to the account
 	double deposit(double amount) {
-		return balance += amount;
+		balance += amount;
+		Transaction transaction = new Transaction(dateCreated, 'D', balance, "deposit");
+		return balance;
 	}
 }
 
