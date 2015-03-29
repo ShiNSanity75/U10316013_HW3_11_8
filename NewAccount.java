@@ -7,6 +7,7 @@ public class NewAccount {
 	private double annualInterestRate; //Store the current interest rate
 	private String name; //name of the customer
 	java.util.Date dateCreated = new java.util.Date(); //stores the date when the account was created
+	ArrayList transactions = new ArrayList(); 
 	
 	//no-arg constructor
 	public NewAccount() {
@@ -91,11 +92,66 @@ public class NewAccount {
 	double deposit(double amount) {
 		return balance += amount;
 	}
-	
-	// Create toString method
-	public String toString(){
-		 return "ID: " + getID() + "\n" + "Balance1: " + withdraw(2500) + "\n" +
-			"Balance2: " + deposit(3000) + "\n" + "Monthly Interest: " + getMonthlyInterest() +
-			"\nDate:" + getDateCreated();
+}
+
+class Transaction {
+	private java.util.Date date = new java.util.Date(); //The date of this transactions
+	private char type; //'w' for withdrawal, 'D' for deposit
+	private double amount; //The amount of this transactions
+	private double balance; //The new balance of this transactions
+	private String description; //The description of this transactions
+
+//constructor with specific date, type, balance, and description
+	Transaction(char newType, double newAmount, double newBalance, String newDescription) {
+		type = newType;
+		amount = newAmount;
+		balance = newBalance;
+		description = newDescription;
 	}
+
+	//get method for type
+	public int getType() {
+		return type;
+	}
+	
+	//set method for type
+	public void setType(int newType) {
+		type = newType;
+	}
+	
+	//get method for amount
+	public int getAmount() {
+		return amount;
+	}
+	
+	//set method for amount
+	public void setAmount(int newAmount) {
+		amount = newAmounte;
+	}
+	
+	//get method for balance
+	public int getBalance() {
+		return balance;
+	}
+	
+	//set method for balance
+	public void setBalance(int newBalance) {
+		balance = newBalance;
+	}
+	
+	//get method for description
+	public int getDescription() {
+		return description;
+	}
+	
+	//set method for description
+	public void setDescription(int newDescription) {
+		description = newDescription;
+	}
+	
+	//get method for date
+	public Date getDate() {
+		 return date;
+	}
+	
 }
