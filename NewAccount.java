@@ -180,6 +180,6 @@ class Transaction {
 	
 	//toString method
 	public String toString() {	
-		return getType() + "    " + amount + " " + getBalance() + " " + getDescription();
+		return getType() + "      " + amount + "      " + getBalance() + "      " + getDescription();
 	}
 }
