@@ -12,10 +12,12 @@ public class TestNewAccount {
 		myNewAccount.withdraw(4.0);
 		myNewAccount.withdraw(2.0);
 		
+		System.out.println("Date: " + myNewAccount.getDateCreated());
 		System.out.println("Name: " + myNewAccount.getName());
-		System.out.println("ID: " + myNewAccount.getId());
+		System.out.println("ID: " + myNewAccount.getID());
 		System.out.println("Monthly Interest: " + myNewAccount.getMonthlyInterestRate());
 		System.out.println("Balance: " + myNewAccount.getBalance());
+		System.out.println("\nType" + "   Amount" + "   Balance" + "   Description");
 		myNewAccount.getTransactions();
 	}
 }
