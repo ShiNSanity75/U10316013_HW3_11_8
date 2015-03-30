@@ -24,18 +24,28 @@ public class NewAccount {
 	}
 	
 	//constructor with the name of the customer,specified id and balance
-	public Account(String newName, int newId, double newBalance) {
+	public NewAccount(String newName, int newId, double newBalance) {
 		name = newName;
 		id = newId;
 		balance = newBalance;
 	}
 	
 	//constructor with the name of the customer,specified id , balance and newAnnualInterestRate
-	public Account(String newName,  int newId, double newBalance, double newAnnualInterestRate) {
+	public NewAccount(String newName,  int newId, double newBalance, double newAnnualInterestRate) {
 		name = newName;
 		id = newId;
 		balance = newBalance;
 		annualInterestRate = newAnnualInterestRate;
+	}
+	
+	//get method for name
+	public String getName() {
+		return name;
+	}
+	
+	//set method for name
+	public void setName(String newName) {
+		name = newName;
 	}
 	
 	//get method for id
@@ -64,8 +74,8 @@ public class NewAccount {
 	}
 	
 	//set method for annualInterestRate
-	public void setAnnualInterestRate(double newAnnualInterestRat) {
-		annualInterestRate = newAnnualInterestRat;
+	public void setAnnualInterestRate(double newAnnualInterestRate) {
+		annualInterestRate = newAnnualInterestRate;
 	}
 	
 	//get method for dateCreated
@@ -86,15 +96,25 @@ public class NewAccount {
 	//withdraw a specified amount from the account
 	double withdraw(double amount) {
 			balance -= amount;
-			Transaction transaction = new Transaction(dateCreated, 'W', balance, "withdraw");
+			Transaction transaction = new Transaction('W', amount, balance, "withdraw");
+			transactions.add(transaction);
 			return balance;
 	}
 	
 	//deposit a specified amount to the account
 	double deposit(double amount) {
 		balance += amount;
-		Transaction transaction = new Transaction(dateCreated, 'D', balance, "deposit");
+		Transaction transaction = new Transaction('D', amount, balance, "deposit");
+		transactions.add(transaction);
 		return balance;
+	}
+	
+	//get method of transactions
+	ArrayList getTransactions() {
+		for (int i = 0; i < transactions.size(); i++) {
+			System.out.println(transactions.get(i));
+		}
+		return transactions;
 	}
 }
 
@@ -105,7 +125,7 @@ class Transaction {
 	private double balance; //The new balance of this transactions
 	private String description; //The description of this transactions
 
-//constructor with specific date, type, balance, and description
+	//constructor with specific date, type, balance, and description
 	Transaction(char newType, double newAmount, double newBalance, String newDescription) {
 		type = newType;
 		amount = newAmount;
@@ -114,42 +134,42 @@ class Transaction {
 	}
 
 	//get method for type
-	public int getType() {
+	public char getType() {
 		return type;
 	}
 	
 	//set method for type
-	public void setType(int newType) {
+	public void setType(char newType) {
 		type = newType;
 	}
 	
 	//get method for amount
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 	
 	//set method for amount
-	public void setAmount(int newAmount) {
-		amount = newAmounte;
+	public void setAmount(double newAmount) {
+		amount = newAmount;
 	}
 	
 	//get method for balance
-	public int getBalance() {
+	public double getBalance() {
 		return balance;
 	}
 	
 	//set method for balance
-	public void setBalance(int newBalance) {
+	public void setBalance(double newBalance) {
 		balance = newBalance;
 	}
 	
 	//get method for description
-	public int getDescription() {
+	public String getDescription() {
 		return description;
 	}
 	
 	//set method for description
-	public void setDescription(int newDescription) {
+	public void setDescription(String newDescription) {
 		description = newDescription;
 	}
 	
@@ -158,4 +178,8 @@ class Transaction {
 		 return date;
 	}
 	
+	//toString method
+	public String toString() {	
+		return getType() + "    " + amount + " " + getBalance() + " " + getDescription();
+	}
 }
